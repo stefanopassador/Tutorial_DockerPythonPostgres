@@ -16,7 +16,7 @@ db = create_engine(db_string)
 def add_new_row(n):
     # Insert a new number into the 'numbers' table.
     db.execute("INSERT INTO numbers (number,timestamp) "+\
-        "VALUES ("+\ 
+        "VALUES ("+ \
         str(n) + "," + \
         str(int(round(time.time() * 1000))) + ");")
 
@@ -25,7 +25,7 @@ def get_last_row():
     query = "" + \
             "SELECT number " + \
             "FROM numbers " + \
-            "WHERE timestamp >= (SELECT max(timestamp) FROM numbers)" +\
+            "WHERE timestamp >= (SELECT max(timestamp) FROM numbers)" + \
             "LIMIT 1"
 
     result_set = db.execute(query)  
